@@ -44,15 +44,15 @@ public class SettingsPane extends VBox {
 
         okButton = new Button();
         okButton.textProperty().bind(localizations.get(VitogiLocalizations.Key.SETTINGS_OK_BUTTON_TEXT));
-        okButton.setOnAction(ignored -> Optional.ofNullable(onActionProperty.get()).ifPresent(Runnable::run));
-        cancelButton = new Button();
-        cancelButton.textProperty().bind(localizations.get(VitogiLocalizations.Key.SETTINGS_CANCEL_BUTTON_TEXT));
-        cancelButton.setOnAction(
+        okButton.setOnAction(
                 ignored -> {
-                    this.localeFieldComboBox.getSelectionModel().select(locale.get());
-                    Optional.ofNullable(onActionProperty.getValue()).ifPresent(Runnable::run);
+                    this.localeUpdater.accept(localeFieldComboBox.getValue());
+                    Optional.ofNullable(onActionProperty.get()).ifPresent(Runnable::run);
                 }
         );
+        cancelButton = new Button();
+        cancelButton.textProperty().bind(localizations.get(VitogiLocalizations.Key.SETTINGS_CANCEL_BUTTON_TEXT));
+        cancelButton.setOnAction(ignored -> Optional.ofNullable(onActionProperty.getValue()).ifPresent(Runnable::run));
         buttonsPane = new HBox(okButton, cancelButton);
 
         getChildren().setAll(localeFieldPane, buttonsPane);
