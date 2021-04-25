@@ -24,8 +24,4 @@ test {
     useJUnitPlatform()
 }
 
-sourceSets {
-    main.output.resourcesDir = main.java.outputDir
-}
-
 application.mainClassName = 'com.github.leblancjs.vitogi/com.github.leblancjs.vitogi.VitogiLauncher'
