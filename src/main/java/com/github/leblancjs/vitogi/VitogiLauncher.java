@@ -16,7 +16,7 @@ public class VitogiLauncher extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        var locale = localizations.localeProperty();
+        var locale = localizations.getLocale();
 
         var settingsPane = new SettingsPane(localizations, locale::set);
         settingsPane.localeProperty().bind(locale);

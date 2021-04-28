@@ -1,6 +1,8 @@
 plugins {
     id 'application'
+    id 'org.jetbrains.kotlin.jvm' version '1.4.32'
     id 'org.openjfx.javafxplugin' version '0.0.9'
+    id 'org.beryx.jlink' version '2.23.1'
 }
 
 group 'com.github.leblancjs.vitogi'
@@ -16,6 +18,7 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }
@@ -25,3 +28,9 @@ test {
 }
 
 application.mainClassName = 'com.github.leblancjs.vitogi/com.github.leblancjs.vitogi.VitogiLauncher'
+
+jlink {
+    launcher {
+        name = 'Vitogi'
+    }
+}
